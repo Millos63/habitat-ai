@@ -17,6 +17,7 @@
 - Stack: React Native (Expo) + FastAPI + PostgreSQL + pgvector + Redis + Cloudinary + OpenAI
 - AI implementation deferred to Phase 6 but architecture prepared from Phase 1
 - All code and commits in English
+- Git branching strategy: `master` (production) ← `development` (integration) ← `feature/phase-X.X-*` (work branches)
 
 ## Known Issues:
 - None
