@@ -70,7 +70,7 @@ habitat-ai/
 
 | Phase | Description | Status |
 |-------|------------|--------|
-| 0 | Setup & Configuration | 🔄 In Progress |
+| 0 | Setup & Configuration | ✅ Complete |
 | 1 | Authentication & Base Structure | ⏳ Pending |
 | 2 | Property Catalog | ⏳ Pending |
 | 3 | CRM & Messaging | ⏳ Pending |
