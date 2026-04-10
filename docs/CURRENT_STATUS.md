@@ -25,7 +25,7 @@
 - Expo SecureStore for JWT token persistence
 
 ## Known Issues:
-- None
+- `development` branch must be created from `master` to follow the documented branching strategy. All future feature branches should be created from and merged into `development`.
 
 ## Notes:
 - Column `embedding vector(1536)` will be added to properties table in Phase 2 but left NULL until Phase 6
