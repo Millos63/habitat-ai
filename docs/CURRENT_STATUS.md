@@ -1,9 +1,9 @@
 # Current Status — Habitat AI
 
-## Current Phase: 1
-## Current Subphase: 1.2 ✅
-## Last Modified File: backend/tests/test_auth.py
-## Immediate Next Task: Phase 2.1 — Property catalog foundations (backend models, migration, list/detail endpoints)
+## Current Phase: 2
+## Current Subphase: 2.1 ✅
+## Last Modified File: backend/tests/test_properties.py
+## Immediate Next Task: Phase 2.2 — Property management endpoints (create/update/delete and status/featured toggles)
 
 ## Completed Files:
 - [x] Repository structure created
@@ -13,6 +13,7 @@
 - [x] Docker setup (Phase 0.5) — docker-compose (PostgreSQL + Redis + Backend), Dockerfile
 - [x] Authentication foundation (Phase 1.1) — users table, auth endpoints, JWT flow, mobile login/register/logout integration
 - [x] Authentication polish (Phase 1.2) — stronger validation rules, loading state UX, improved API error messaging, backend auth tests
+- [x] Property catalog foundations (Phase 2.1) — properties model, migration, public list/detail/featured endpoints, filters, and tests
 
 ## Decisions Made:
 - Project name: Habitat AI
