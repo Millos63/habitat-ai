@@ -1,6 +1,7 @@
 import pytest
 from httpx import ASGITransport, AsyncClient
 
+from app.database import engine
 from app.main import app
 
 
@@ -17,3 +18,5 @@ async def client():
         base_url="http://test",
     ) as ac:
         yield ac
+
+    await engine.dispose()
