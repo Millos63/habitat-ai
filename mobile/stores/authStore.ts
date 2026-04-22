@@ -1,5 +1,7 @@
 import { create } from "zustand";
 import * as SecureStore from "expo-secure-store";
+
+import authService from "@/services/auth.service";
 import { User } from "@/types/user.types";
 
 interface AuthState {
@@ -7,9 +9,11 @@ interface AuthState {
   token: string | null;
   isAuthenticated: boolean;
   isLoading: boolean;
-  setAuth: (user: User, token: string) => Promise<void>;
+  setAuth: (token: string, user?: User | null) => Promise<void>;
+  setUser: (user: User | null) => void;
   logout: () => Promise<void>;
   loadToken: () => Promise<void>;
+  hydrateAuth: () => Promise<void>;
 }
 
 const useAuthStore = create<AuthState>((set) => ({
@@ -18,9 +22,13 @@ const useAuthStore = create<AuthState>((set) => ({
   isAuthenticated: false,
   isLoading: true,
 
-  setAuth: async (user: User, token: string) => {
+  setAuth: async (token: string, user: User | null = null) => {
     await SecureStore.setItemAsync("access_token", token);
     set({ user, token, isAuthenticated: true, isLoading: false });
+  },
+
+  setUser: (user: User | null) => {
+    set({ user });
   },
 
   logout: async () => {
@@ -31,6 +39,25 @@ const useAuthStore = create<AuthState>((set) => ({
   loadToken: async () => {
     const token = await SecureStore.getItemAsync("access_token");
     set({ token, isAuthenticated: !!token, isLoading: false });
+  },
+
+  hydrateAuth: async () => {
+    const token = await SecureStore.getItemAsync("access_token");
+
+    if (!token) {
+      set({ user: null, token: null, isAuthenticated: false, isLoading: false });
+      return;
+    }
+
+    set({ token, isAuthenticated: true, isLoading: true });
+
+    try {
+      const user = await authService.getMe();
+      set({ user, token, isAuthenticated: true, isLoading: false });
+    } catch {
+      await SecureStore.deleteItemAsync("access_token");
+      set({ user: null, token: null, isAuthenticated: false, isLoading: false });
+    }
   },
 }));
 

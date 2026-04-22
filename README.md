@@ -91,9 +91,8 @@ This starts PostgreSQL, Redis, and the backend API all at once:
 # Copy environment variables
 cp backend/.env.example backend/.env
 
-# Edit backend/.env — update DATABASE_URL for Docker networking:
-# DATABASE_URL=postgresql+asyncpg://postgres:postgres@db:5432/habitat_ai
-# REDIS_URL=redis://redis:6379
+# Docker Compose already overrides DATABASE_URL and REDIS_URL
+# to use the `db` and `redis` service names inside Docker.
 
 # Start all services
 docker compose -f docker/docker-compose.yml up --build

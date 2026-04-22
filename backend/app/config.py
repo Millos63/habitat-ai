@@ -30,6 +30,15 @@ class Settings(BaseSettings):
     CLOUDINARY_API_KEY: str = ""
     CLOUDINARY_API_SECRET: str = ""
 
+    # Twilio
+    TWILIO_ACCOUNT_SID: str = ""
+    TWILIO_AUTH_TOKEN: str = ""
+    TWILIO_WHATSAPP_NUMBER: str = ""
+
+    # Email
+    SENDGRID_API_KEY: str = ""
+    FROM_EMAIL: str = "no-reply@habitat-ai.com"
+
     # CORS
     CORS_ORIGINS: list[str] = ["*"]
 
